@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue百度搜索</title>
+    <link rel="stylesheet" href="index.css"/>
+    <script src="lib/vue.min.js"></script>
+    <script src="lib/vue-resource.min.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+    <div class="project">
+        <img alt="" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"/>
+        <div class="baiduSearchBox">
+            <input type="text" class="baiduSearch" @keyup="show($event)" v-model="kw" @keydown.down="changeDown()" @keydown.up.prevent="changeUp()"/>
+            <span class="baiduSearchButton">搜索一下</span>
+
+            <ul v-show="results.length">
+                <li v-for="(item,index) in results" v-text="item" :class="{gray:index == nowIndex}"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
